@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var loginViewModel = LoginViewModel()
+    @EnvironmentObject var authentication: AuthService
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            
+            Text("Logged In !!")
+            Button("Sign out") {
+                loginViewModel.logout(authentication: authentication)
+            }.buttonStyle(.borderedProminent)
         }
         .padding()
     }
